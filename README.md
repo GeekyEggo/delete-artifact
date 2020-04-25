@@ -14,7 +14,7 @@ steps:
     path: world.txt
 
 # delete-artifact
-- uses: geekyeggo/delete-artifact
+- uses: geekyeggo/delete-artifact@v1
   with:
     name: my-artifact
 ```
@@ -24,7 +24,7 @@ steps:
 Deleting multiple artifacts within a single action can be achieved by specifying each artifact name on a new line; this can improve performance when deleting more than one artifact.
 ```yml
 steps:
-- uses: geekyeggo/delete-artifact
+- uses: geekyeggo/delete-artifact@v1
   with:
     name: |
       artifact-one
@@ -38,7 +38,7 @@ By default, the action will fail when it was not possible to delete an artifact 
 
 ```yml
 steps:
-- uses: geekyeggo/delete-artifact
+- uses: geekyeggo/delete-artifact@v1
   with:
     name: okay-to-keep
     failOnError: false
