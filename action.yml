@@ -1,0 +1,13 @@
+name: Delete Artifact
+description: Deletes artifacts from a workflow run
+inputs:
+  name:
+    description: The name of the artifact to delete; multiple names can be supplied on new lines.
+    required: true
+  failOnError:
+    description: Indicates whether the action should fail upon encountering an error.
+    required: false
+    default: true
+runs:
+  using: node12
+  main: ./dist/index.js
