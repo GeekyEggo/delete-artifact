@@ -18,7 +18,7 @@ export class RuntimeHttpClient {
         ]);
 
         this.requestOptions = {
-            "Accept": `application/json;api-version=${this.apiVersion}`
+            'Accept': `application/json;api-version=${this.apiVersion}`
         };
     }
 
