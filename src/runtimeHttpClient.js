@@ -65,9 +65,7 @@ export class RuntimeHttpClient {
             core.debug(e)
         }
 
-        return {
-            success: false,
-        }
+        return { success: false };
     }
 
     /**

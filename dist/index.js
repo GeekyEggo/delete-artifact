@@ -967,9 +967,7 @@ class runtimeHttpClient_RuntimeHttpClient {
             Object(core.debug)(e)
         }
 
-        return {
-            success: false,
-        }
+        return { success: false };
     }
 
     /**
