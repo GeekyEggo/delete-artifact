@@ -1,5 +1,5 @@
 name: Delete Artifact
-description: Deletes artifacts from a workflow run
+description: Delete artifacts created within the workflow run.
 inputs:
   name:
     description: The name of the artifact to delete; multiple names can be supplied on new lines.
@@ -11,3 +11,6 @@ inputs:
 runs:
   using: node12
   main: ./dist/index.js
+branding:
+  icon: trash-2
+  color: red

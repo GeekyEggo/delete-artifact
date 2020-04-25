@@ -1,5 +1,5 @@
-# 🗑 Delete workflow artifacts
-Enables the deletion of artifacts within the workflow run. This can be useful when artifacts are shared across jobs, but are no longer needed when the workflow is complete.
+# Delete artifacts
+A GitHub Action for deleting artifacts within the workflow run. This can be useful when artifacts are shared across jobs, but are no longer needed when the workflow is complete.
 
 ## Usage
 ```yml
