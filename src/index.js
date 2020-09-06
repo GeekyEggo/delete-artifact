@@ -40,6 +40,8 @@ async function run() {
         return;
     }
     JSON.stringify({
+        __filename,
+        getName: core.getInput('name'),
         artifacts,
         names: getNames()
     }, null, 2).split("\n").map(l => core.info(l));
