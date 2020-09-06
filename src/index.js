@@ -39,13 +39,13 @@ async function run() {
         fail('Failed to load artifacts; debug logs may be available.');
         return;
     }
-    core.info(JSON.stringify(getNames()));
-    JSON.stringify({
+    console.log(JSON.stringify(getNames()));
+    console.log(JSON.stringify({
         __filename,
         getName: core.getInput('name'),
         artifacts,
         names: getNames()
-    }, null, 2).split("\n").map(l => core.info(l));
+    }, null, 2));
 
     // iterate over the supplied artifact names and attempt to delete them
     let success = true;
