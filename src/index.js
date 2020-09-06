@@ -39,7 +39,9 @@ async function run() {
         fail('Failed to load artifacts; debug logs may be available.');
         return;
     }
-
+    console.log(artifacts);
+    console.log(getNames());
+    
     // iterate over the supplied artifact names and attempt to delete them
     let success = true;
     for (const name of getNames()) {
