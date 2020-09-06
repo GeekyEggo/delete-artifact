@@ -39,8 +39,7 @@ async function run() {
         fail('Failed to load artifacts; debug logs may be available.');
         return;
     }
-    console.log(JSON.stringify(getNames()));
-    console.log(JSON.stringify({
+    core.debug(JSON.stringify({
         __filename,
         getName: core.getInput('name'),
         artifacts,

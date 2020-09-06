@@ -50,5 +50,5 @@ jobs:
 
     - uses: tufan-io/delete-artifact@v2
       with:
-        name: "*.age"
+        name: ".*age"
   
