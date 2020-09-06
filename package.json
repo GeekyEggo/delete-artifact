@@ -1,10 +1,9 @@
 {
   "name": "delete-artifact",
   "description": "Deletes artifacts from a workflow run",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "scripts": {
-    "build": "ncc build ./src/index.js && git add dist/ -f",
-    "watch": "ncc build ./src/index.js -w && git add dist/ -f"
+    "build": "webpack"
   },
   "keywords": [
     "github",
