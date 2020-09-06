@@ -40,15 +40,15 @@ jobs:
         name: old-age
         path: world.txt
 
-    - uses: tufan-io/delete-artifact
+    - uses: tufan-io/delete-artifact@v2
       with:
         name: new-age
 
-    - uses: tufan-io/delete-artifact
+    - uses: tufan-io/delete-artifact@v2
       with:
         name: "world*"
 
-    - uses: tufan-io/delete-artifact
+    - uses: tufan-io/delete-artifact@v2
       with:
         name: "*.age"
   
