@@ -2,8 +2,11 @@ name: Example
 # an example workflow that also monitors success of the preview api
 
 on:
-  schedule:
-    - cron: '0 */6 * * *'
+  push:
+    branches:
+      - "*"
+  # schedule:
+    # - cron: '0 */6 * * *'
     # every 6 hours
 
 defaults:
@@ -12,7 +15,7 @@ defaults:
 
 jobs:
   test:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - run: echo hello > world.txt
