@@ -43,7 +43,7 @@ async function run() {
     // iterate over the supplied artifact names and attempt to delete them
     let success = true;
     for (const name of getNames()) {
-        const subset = artifacts.data.value.filter(a => a.name === name || (new RegExp(name).match(a.name)));
+        const subset = artifacts.data.value.filter(a => a.name === name || (new RegExp(name).test(a.name)));
         if (subset.length) {
             for (const artifact of subset) {
                 const del = await client.deleteArtifact(artifact.url);
