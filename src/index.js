@@ -62,7 +62,7 @@ async function run() {
                 }
             }
         } else {
-            core.warning(`Unable to delete artifact "${name}"; the artifact was not found.`);
+            core.warning(`Unable to delete artifact "${name}"; the artifact was not found. ${JSON.stringify(artifacts.data)}`);
         }
     }
 
