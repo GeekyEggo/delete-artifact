@@ -19,9 +19,33 @@ jobs:
 
     - uses: actions/upload-artifact@v1
       with:
-        name: my-artifact
+        name: world
         path: world.txt
 
-    - uses: geekyeggo/delete-artifact@v1
+    - uses: actions/upload-artifact@v1
       with:
-        name: my-artifact
+        name: world2
+        path: world.txt
+
+    - uses: actions/upload-artifact@v1
+      with:
+        name: new-age
+        path: world.txt
+
+    - uses: actions/upload-artifact@v1
+      with:
+        name: old-age
+        path: world.txt
+
+    - uses: tufan-io/delete-artifact@v1
+      with:
+        name: new-age
+
+    - uses: tufan-io/delete-artifact@v1
+      with:
+        name: "world*"
+
+    - uses: tufan-io/delete-artifact@v1
+      with:
+        name: "*.age"
+  
