@@ -32,28 +32,36 @@ function fail(msg) {
  */
 async function run() {
     const client = new RuntimeHttpClient(process.env);
-    
+
     // get the artifacts
     const artifacts = await client.listArtifacts();
     if (!artifacts.success) {
         fail('Failed to load artifacts; debug logs may be available.');
         return;
     }
+    core.debug(JSON.stringify({
+        __filename,
+        getName: core.getInput('name'),
+        artifacts,
+        names: getNames()
+    }, null, 2));
 
     // iterate over the supplied artifact names and attempt to delete them
     let success = true;
     for (const name of getNames()) {
-        const artifact = artifacts.data.value.find(a => a.name == name);
-        if (artifact) {
-            const del = await client.deleteArtifact(artifact.url);
-            if (del.success) {
-                core.info(`Successfully deleted artifact "${name}".`);
-            } else {
-                core.error(`Failed to delete artifact "${name}"; debug logs may be available.`);
-                success = false;
+        const subset = artifacts.data.value.filter(a => a.name === name || (new RegExp(name).test(a.name)));
+        if (subset.length) {
+            for (const artifact of subset) {
+                const del = await client.deleteArtifact(artifact.url);
+                if (del.success) {
+                    core.info(`Successfully deleted artifact "${artifact.name}".`);
+                } else {
+                    core.error(`Failed to delete artifact "${artifact.name}"; debug logs may be available.`);
+                    success = false;
+                }
             }
         } else {
-            core.warning(`Unable to delete artifact "${name}"; the artifact was not found.`);
+            core.warning(`Unable to delete artifact "${name}"; the artifact was not found. ${JSON.stringify(artifacts.data)}`);
         }
     }
 

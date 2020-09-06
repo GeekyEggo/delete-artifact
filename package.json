@@ -1,10 +1,9 @@
 {
   "name": "delete-artifact",
   "description": "Deletes artifacts from a workflow run",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "scripts": {
-    "build": "ncc build ./src/index.js && git add dist/ -f",
-    "watch": "ncc build ./src/index.js -w && git add dist/ -f"
+    "build": "webpack"
   },
   "keywords": [
     "github",
@@ -15,11 +14,15 @@
   "author": "GeekyEggo",
   "license": "MIT",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/geekyeggo/delete-artifact"
+    "type": "git",
+    "url": "https://github.com/geekyeggo/delete-artifact"
   },
   "dependencies": {
     "@actions/core": "^1.2.3",
     "@actions/http-client": "^1.0.8"
+  },
+  "devDependencies": {
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
   }
 }

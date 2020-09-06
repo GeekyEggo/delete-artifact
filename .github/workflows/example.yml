@@ -2,8 +2,11 @@ name: Example
 # an example workflow that also monitors success of the preview api
 
 on:
-  schedule:
-    - cron: '0 */6 * * *'
+  push:
+    branches:
+      - "*"
+  # schedule:
+    # - cron: '0 */6 * * *'
     # every 6 hours
 
 defaults:
@@ -12,16 +15,40 @@ defaults:
 
 jobs:
   test:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - run: echo hello > world.txt
 
     - uses: actions/upload-artifact@v1
       with:
-        name: my-artifact
+        name: world
         path: world.txt
 
-    - uses: geekyeggo/delete-artifact@v1
+    - uses: actions/upload-artifact@v1
       with:
-        name: my-artifact
+        name: world2
+        path: world.txt
+
+    - uses: actions/upload-artifact@v1
+      with:
+        name: new-age
+        path: world.txt
+
+    - uses: actions/upload-artifact@v1
+      with:
+        name: old-age
+        path: world.txt
+
+    - uses: tufan-io/delete-artifact@v2
+      with:
+        name: new-age
+
+    - uses: tufan-io/delete-artifact@v2
+      with:
+        name: "world*"
+
+    - uses: tufan-io/delete-artifact@v2
+      with:
+        name: ".*age"
+  
