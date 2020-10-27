@@ -1,0 +1,22 @@
+# This workflow tests that the action can properly delete an artifact
+#   This also monitors the status of the Preview API
+name: Integration
+
+on:
+  schedule:
+    - cron: '0 */6 * * *' # every 6 hours
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo hello > world.txt
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: artifact-example
+        path: world.txt
+
+    - uses: emmasax4/delete-artifact-action@main
+      with:
+        name: artifact-example

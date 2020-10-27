@@ -1,0 +1,43 @@
+# This workflow tests that the project can build and tests can run
+name: Build and Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check Out Code
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Define Environment Variables
+      run: |
+        if [[ ${{ github.ref }} == 'refs/heads'* ]]; then # this is a branch, not a pull request
+          echo "branch=$(echo ${{ github.ref }} | sed -E 's|refs/[a-zA-Z]+/||')" >> $GITHUB_ENV
+        else
+          echo "branch=$(echo ${{ github.head_ref }} | sed -E 's|refs/[a-zA-Z]+/||')" >> $GITHUB_ENV
+        fi
+
+    - name: Switch to Current Branch
+      run: git checkout ${{ env.branch }}
+
+    - name: Set Up Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.15.1'
+        registry-url: 'https://registry.npmjs.org'
+
+    - name: Install Yarn
+      run: npm install -g yarn
+
+    - name: Yarn Install and Test
+      run: |
+        yarn install
+        yarn build
+        yarn watch

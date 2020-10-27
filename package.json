@@ -15,11 +15,11 @@
   "author": "GeekyEggo",
   "license": "MIT",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/geekyeggo/delete-artifact"
+    "type": "git",
+    "url": "https://github.com/geekyeggo/delete-artifact"
   },
   "dependencies": {
-    "@actions/core": "^1.2.3",
+    "@actions/core": "1.2.6",
     "@actions/http-client": "^1.0.8"
   }
 }
