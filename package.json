@@ -19,7 +19,7 @@
     "url" : "https://github.com/geekyeggo/delete-artifact"
   },
   "dependencies": {
-    "@actions/core": "^1.2.3",
+    "@actions/core": "^1.9.1",
     "@actions/http-client": "^1.0.8"
   }
 }
