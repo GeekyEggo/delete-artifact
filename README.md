@@ -8,6 +8,9 @@ A GitHub Action for deleting artifacts within the workflow run. This can be usef
 
 See [action.yml](action.yml)
 
+> **Warning**
+> From version 2 onwards, glob (wildcard) support is on by default, and is fulfilled by [minimatch](https://www.npmjs.com/package/minimatch); this can be disabled by setting `useGlob` to `false`.
+
 ### Delete an individual artifact
 
 ```yml
