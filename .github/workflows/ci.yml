@@ -1,0 +1,63 @@
+name: CI
+# an example workflow that also monitors success of the preview api
+
+on:
+  push:
+    branches:
+    - master
+
+  schedule:
+    - cron: '0 */6 * * *'
+    # every 6 hours
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  test:
+    runs-on: windows-latest
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Create test file
+      run: echo hello > world.txt
+    
+    - uses: actions/upload-artifact@v2
+      with:
+        name: my-artifact
+        path: world.txt
+   
+    - uses: actions/upload-artifact@v2
+      with:
+        name: my-artifact-2
+        path: world.txt
+    
+    - uses: actions/upload-artifact@v2
+      with:
+        name: my-artifact-3
+        path: world.txt
+    
+    - uses: actions/upload-artifact@v2
+      with:
+        name: you-artifact
+        path: world.txt
+
+    - name: Delete (specific, glob disabled)
+      uses: ./
+      with:
+        name: my-artifact
+        useGlob: false
+
+    - name: Delete (pattern, glob enabled)
+      uses: ./
+      with:
+        name: my-*
+
+    - name: Delete (specific, glob enabled)
+      uses: ./
+      with:
+        name: you-artifact
