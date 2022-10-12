@@ -1,14 +1,9 @@
 name: CI
-# an example workflow that also monitors success of the preview api
 
 on:
   push:
     branches:
     - master
-
-  schedule:
-    - cron: '0 */6 * * *'
-    # every 6 hours
 
 defaults:
   run:

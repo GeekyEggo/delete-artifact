@@ -1,4 +1,5 @@
-![Example](https://github.com/GeekyEggo/delete-artifact/workflows/CI/badge.svg)
+![CI](https://github.com/GeekyEggo/delete-artifact/workflows/CI/badge.svg)
+![Example](https://github.com/GeekyEggo/delete-artifact/workflows/Example/badge.svg)
 
 # Delete artifacts
 
