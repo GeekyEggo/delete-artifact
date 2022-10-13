@@ -35,7 +35,7 @@ steps:
 
 ```yml
 steps:
-    - uses: geekyeggo/delete-artifact@2
+    - uses: geekyeggo/delete-artifact@v2
       with:
           name: |
               artifact-*
