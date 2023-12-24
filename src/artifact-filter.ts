@@ -1,14 +1,17 @@
 import * as core from "@actions/core";
-import minimatch from "minimatch";
-import { Artifact } from "./typings/github-artifacts";
+import { minimatch } from "minimatch";
+import { Artifact } from "./artifact";
 import { getInputBoolean, getInputMultilineValues } from "./utils";
 
+/**
+ * Filters artifacts based on the actions configuration.
+ */
 type Filter = (artifacts: Artifact[]) => IterableIterator<Artifact>;
 
 /**
  * Gets a filter that enables filtering of artifacts based on an exact match of their name.
- * @param {string[]} names The names to match.
- * @returns {Filter} The exact match filter.
+ * @param names The names to match.
+ * @returns The exact match filter.
  */
 function getExactMatchFilter(names: string[]): Filter {
     return function* filter(artifacts: Artifact[]): IterableIterator<Artifact> {
@@ -27,8 +30,8 @@ function getExactMatchFilter(names: string[]): Filter {
 
 /**
  * Gets a filter that enables filtering of artifacts based on glob-pattern matching their name.
- * @param {string[]} names The names to match.
- * @returns {Filter} The glob match filter.
+ * @param  names The names to match.
+ * @returns The glob match filter.
  */
 function getGlobMatchFilter(names: string[]): Filter {
     const isMatch = (artifact: Artifact): boolean =>
@@ -43,7 +46,7 @@ function getGlobMatchFilter(names: string[]): Filter {
 
 /**
  * Gets the default filter based on the action settings.
- * @returns {Filter} The filter to be used when determining which artifacts to delete.
+ * @returns The filter to be used when determining which artifacts to delete.
  */
 export function getDefaultFilter(): Filter {
     const names = getInputMultilineValues("name");
@@ -52,4 +55,3 @@ export function getDefaultFilter(): Filter {
         ? getGlobMatchFilter(names)
         : getExactMatchFilter(names);
 }
-

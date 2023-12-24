@@ -4,17 +4,21 @@ inputs:
   name:
     description: The name of the artifact to delete; multiple names can be supplied on new lines.
     required: true
+  token:
+    description: GitHub token with read and write access to actions for the repository.
+    required: true
   useGlob:
     description: Indicates whether the name, or names, should be treated as glob patterns.
     required: false
-    default: 'true'
+    default: "true"
   failOnError:
     description: Indicates whether the action should fail upon encountering an error.
     required: false
-    default: 'true'
+    default: "true"
 runs:
-  using: node16
+  using: node20
   main: ./dist/index.js
 branding:
   icon: trash-2
   color: red
+
