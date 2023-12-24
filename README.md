@@ -5,6 +5,13 @@
 
 A GitHub Action for deleting artifacts within the workflow run. This can be useful when artifacts are shared across jobs, but are no longer needed when the workflow is complete.
 
+## ✅ Compatibility
+
+| `actions/upload-artifact` | `geekyeggo/delete-artifact` |
+| ------------------------- | --------------------------- |
+| `@v1`, `@v2`, `@v3`       | `@v1`, `@v2`                |
+| `@v4`                     | `@v4`                       |
+
 ## ⚡ Usage
 
 See [action.yml](action.yml)
@@ -16,18 +23,20 @@ See [action.yml](action.yml)
 
 ```yml
 steps:
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v4
 
-    - run: echo hello > world.txt
+    - name: Create test file
+      run: echo hello > test.txt
 
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v4
       with:
           name: my-artifact
-          path: world.txt
+          path: test.txt
 
-    # delete-artifact
-    - uses: geekyeggo/delete-artifact@v2
+    - uses: geekyeggo/delete-artifact@v4
       with:
+          token: ${{ secrets.TOKEN }}
           name: my-artifact
 ```
 
@@ -35,12 +44,13 @@ steps:
 
 ```yml
 steps:
-    - uses: geekyeggo/delete-artifact@v2
+    - uses: geekyeggo/delete-artifact@v4
       with:
+          token: ${{ secrets.TOKEN }}
           name: |
-              artifact-*
-              binary-file
-              output
+		  	one
+			two
+			three
 ```
 
 ## 🚨 Error vs Fail
@@ -49,13 +59,10 @@ By default, the action will fail when it was not possible to delete an artifact 
 
 ```yml
 steps:
-    - uses: geekyeggo/delete-artifact@v2
+    - uses: geekyeggo/delete-artifact@v4
       with:
+          token: ${{ secrets.TOKEN }}
           name: okay-to-keep
           failOnError: false
 ```
-
-## ⚠ Disclaimer
-
-This action utilizes a preview version of GitHub's runtime API; the API is subject to change at any time which may result in failures of this action.
 
