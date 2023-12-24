@@ -3,7 +3,7 @@ name: Example
 
 on:
   schedule:
-    - cron: '0 */6 * * *'
+    - cron: "0 */6 * * *"
     # every 6 hours
 
 defaults:
@@ -12,48 +12,47 @@ defaults:
 
 jobs:
   test:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
-    - name: Checkout
-      uses: actions/checkout@v2
+      - name: Create test file
+        run: echo hello > world.txt
 
-    - name: Create test file
-      run: echo hello > world.txt
-    
-    - uses: actions/upload-artifact@v2
-      with:
-        name: my-artifact
-        path: world.txt
-   
-    - uses: actions/upload-artifact@v2
-      with:
-        name: my-artifact-2
-        path: world.txt
-    
-    - uses: actions/upload-artifact@v2
-      with:
-        name: my-artifact-3
-        path: world.txt
-    
-    - uses: actions/upload-artifact@v2
-      with:
-        name: you-artifact
-        path: world.txt
+      - uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: world.txt
 
-    - name: Delete (specific, glob disabled)
-      uses: geekyeggo/delete-artifact@v2
-      with:
-        name: my-artifact
-        useGlob: false
+      - uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact-2
+          path: world.txt
 
-    - name: Delete (pattern, glob enabled)
-      uses: geekyeggo/delete-artifact@v2
-      with:
-        name: my-*
+      - uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact-3
+          path: world.txt
 
-    - name: Delete (specific, glob enabled)
-      uses: geekyeggo/delete-artifact@v2
-      with:
-        name: you-artifact
+      - uses: actions/upload-artifact@v2
+        with:
+          name: you-artifact
+          path: world.txt
+
+      - name: Delete (specific, glob disabled)
+        uses: geekyeggo/delete-artifact@v2
+        with:
+          name: my-artifact
+          useGlob: false
+
+      - name: Delete (pattern, glob enabled)
+        uses: geekyeggo/delete-artifact@v2
+        with:
+          name: my-*
+
+      - name: Delete (specific, glob enabled)
+        uses: geekyeggo/delete-artifact@v2
+        with:
+          name: you-artifact
