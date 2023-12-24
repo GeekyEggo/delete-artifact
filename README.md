@@ -48,9 +48,9 @@ steps:
       with:
           token: ${{ secrets.TOKEN }}
           name: |
-		  	one
-			two
-			three
+              artifact-*
+              binary-file
+              output
 ```
 
 ## 🚨 Error vs Fail
