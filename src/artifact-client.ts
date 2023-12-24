@@ -11,22 +11,11 @@ export class ArtifactClient {
     private readonly octokit: ReturnType<typeof github.getOctokit>;
 
     /**
-     * Owner of the GitHub repository.
-     */
-    private readonly owner: string;
-
-    /**
-     * GitHub repository.
-     */
-    private readonly repo: string;
-
-    /**
      * Initializes a new instance of the {@link ArtifactClient}.
      * @param token GitHub token with read and write access to actions.
      */
     constructor(token: string) {
         this.octokit = github.getOctokit(token);
-        [this.owner, this.repo] = process.env.GITHUB_REPOSITORY.split("/");
     }
 
     /**
@@ -36,9 +25,8 @@ export class ArtifactClient {
      */
     public async del(artifactId: number): Promise<boolean> {
         const { status } = await this.octokit.rest.actions.deleteArtifact({
+            ...github.context.repo,
             artifact_id: artifactId,
-            owner: this.owner,
-            repo: this.repo,
         });
 
         return this.success(status);
@@ -50,8 +38,7 @@ export class ArtifactClient {
      */
     public async list(): Promise<Artifact[]> {
         const res = await this.octokit.rest.actions.listWorkflowRunArtifacts({
-            owner: this.owner,
-            repo: this.repo,
+            ...github.context.repo,
             run_id: parseInt(process.env.GITHUB_RUN_ID),
         });
 
@@ -73,4 +60,3 @@ export class ArtifactClient {
         );
     }
 }
-

@@ -29236,7 +29236,6 @@ class ArtifactClient {
      */
     constructor(token) {
         this.octokit = github.getOctokit(token);
-        [this.owner, this.repo] = process.env.GITHUB_REPOSITORY.split("/");
     }
     /**
      * Deletes the specified artifact.
@@ -29245,11 +29244,7 @@ class ArtifactClient {
      */
     del(artifactId) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { status } = yield this.octokit.rest.actions.deleteArtifact({
-                artifact_id: artifactId,
-                owner: this.owner,
-                repo: this.repo,
-            });
+            const { status } = yield this.octokit.rest.actions.deleteArtifact(Object.assign(Object.assign({}, github.context.repo), { artifact_id: artifactId }));
             return this.success(status);
         });
     }
@@ -29259,11 +29254,7 @@ class ArtifactClient {
      */
     list() {
         return __awaiter(this, void 0, void 0, function* () {
-            const res = yield this.octokit.rest.actions.listWorkflowRunArtifacts({
-                owner: this.owner,
-                repo: this.repo,
-                run_id: parseInt(process.env.GITHUB_RUN_ID),
-            });
+            const res = yield this.octokit.rest.actions.listWorkflowRunArtifacts(Object.assign(Object.assign({}, github.context.repo), { run_id: parseInt(process.env.GITHUB_RUN_ID) }));
             if (!this.success(res.status)) {
                 throw new Error("Failed to load artifacts");
             }
