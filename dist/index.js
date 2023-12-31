@@ -29419,7 +29419,8 @@ const utils_1 = __nccwpck_require__(1314);
             }
         }
         catch (err) {
-            core.error(`${err}`);
+            // @ts-ignore
+            core.setFailed(err);
         }
     });
 })();

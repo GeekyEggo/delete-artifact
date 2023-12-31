@@ -30,6 +30,7 @@ import { fail } from "./utils";
             );
         }
     } catch (err) {
-        core.error(`${err}`);
+        // @ts-ignore
+        core.setFailed(err);
     }
 })();
