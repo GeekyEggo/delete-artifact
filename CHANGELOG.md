@@ -11,6 +11,11 @@
 
 # Change Log
 
+## v4.1
+
+-   Add default token.
+-   Fix over-arching `catch` output; errors now correctly result in a failed run ([@TheMrMilchmann ](https://github.com/TheMrMilchmann)).
+
 ## v4.0
 
 -   Add support for artifacts uploaded with `actions/upload-artifact@v4`.
@@ -25,4 +30,3 @@
 ## v1.0
 
 -   Initial release.
-

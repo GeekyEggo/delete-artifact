@@ -17,7 +17,7 @@ A GitHub Action for deleting artifacts within the workflow run. This can be usef
 See [action.yml](action.yml)
 
 > [!IMPORTANT]
-> Support for `actions/upload-artifact@v4` utilizes the GitHub REST API, and requires a permissive [`GITHUB_TOKEN`](https://docs.github.com/en/actions/security-guides/automatic-token-authentication#permissions-for-the-github_token), or a PAT with read and write access to actions.
+> Support for `actions/upload-artifact@v4` utilizes the GitHub REST API, and requires a permissive [`GITHUB_TOKEN`](https://docs.github.com/en/actions/security-guides/automatic-token-authentication#permissions-for-the-github_token), or a PAT with read and write access to `actions`.
 
 ### Delete an individual artifact
 
@@ -36,7 +36,6 @@ steps:
 
     - uses: geekyeggo/delete-artifact@v4
       with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           name: my-artifact
 ```
 
@@ -46,7 +45,6 @@ steps:
 steps:
     - uses: geekyeggo/delete-artifact@v4
       with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           name: |
               artifact-*
               binary-file
@@ -61,8 +59,6 @@ By default, the action will fail when it was not possible to delete an artifact 
 steps:
     - uses: geekyeggo/delete-artifact@v4
       with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           name: okay-to-keep
           failOnError: false
 ```
-
