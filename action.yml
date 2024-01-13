@@ -7,6 +7,7 @@ inputs:
   token:
     description: GitHub token with read and write access to actions for the repository.
     required: true
+    default: ${{ github.token }}
   useGlob:
     description: Indicates whether the name, or names, should be treated as glob patterns.
     required: false
@@ -21,4 +22,3 @@ runs:
 branding:
   icon: trash-2
   color: red
-

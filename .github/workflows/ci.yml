@@ -43,17 +43,15 @@ jobs:
       - name: Delete (specific, glob disabled)
         uses: ./
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           name: my-artifact
           useGlob: false
 
       - name: Delete (pattern, glob enabled)
         uses: ./
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           name: my-*
 
-      - name: Delete (specific, glob enabled)
+      - name: Delete (specific, glob enabled, and token specified)
         uses: ./
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
