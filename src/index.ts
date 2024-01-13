@@ -30,6 +30,6 @@ import { fail } from "./utils";
             );
         }
     } catch (err) {
-        core.error(`${err}`);
+        core.setFailed(<string | Error>err);
     }
 })();
