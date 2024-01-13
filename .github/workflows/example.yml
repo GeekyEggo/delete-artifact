@@ -46,15 +46,13 @@ jobs:
         with:
           name: my-artifact
           useGlob: false
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Delete (pattern, glob enabled)
         uses: geekyeggo/delete-artifact@v4
         with:
           name: my-*
-          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Delete (specific, glob enabled)
+      - name: Delete (specific, glob enabled, with token)
         uses: geekyeggo/delete-artifact@v4
         with:
           name: you-artifact
