@@ -36,11 +36,6 @@ jobs:
           name: my-artifact-3
           path: world.txt
 
-      - uses: actions/upload-artifact@v4
-        with:
-          name: you-artifact
-          path: world.txt
-
       - name: Delete (specific, glob disabled)
         uses: geekyeggo/delete-artifact@v4
         with:
@@ -51,9 +46,3 @@ jobs:
         uses: geekyeggo/delete-artifact@v4
         with:
           name: my-*
-
-      - name: Delete (specific, glob enabled, with token)
-        uses: geekyeggo/delete-artifact@v4
-        with:
-          name: you-artifact
-          token: ${{ secrets.GITHUB_TOKEN }}
