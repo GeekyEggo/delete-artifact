@@ -10,14 +10,14 @@ A GitHub Action for deleting artifacts within the workflow run. This can be usef
 | `actions/upload-artifact` | `geekyeggo/delete-artifact` |
 | ------------------------- | --------------------------- |
 | `@v1`, `@v2`, `@v3`       | `@v1`, `@v2`                |
-| `@v4`                     | `@v4`                       |
+| `@v4`                     | ~~@v4~~, `@v5`              |
+
+> [!NOTE]
+> `geekyeggo/delete-artifact@v4` has been deprecated in favour of `geekyeggo/delete-artifact@v5` which removes the requirement of the `token` parameter.
 
 ## ⚡ Usage
 
 See [action.yml](action.yml)
-
-> [!IMPORTANT]
-> Support for `actions/upload-artifact@v4` utilizes the GitHub REST API, and requires a permissive [`GITHUB_TOKEN`](https://docs.github.com/en/actions/security-guides/automatic-token-authentication#permissions-for-the-github_token), or a PAT with read and write access to `actions`.
 
 ### Delete an individual artifact
 
@@ -34,7 +34,7 @@ steps:
           name: my-artifact
           path: test.txt
 
-    - uses: geekyeggo/delete-artifact@v4
+    - uses: geekyeggo/delete-artifact@v5
       with:
           name: my-artifact
 ```
@@ -43,7 +43,7 @@ steps:
 
 ```yml
 steps:
-    - uses: geekyeggo/delete-artifact@v4
+    - uses: geekyeggo/delete-artifact@v5
       with:
           name: |
               artifact-*
@@ -57,7 +57,7 @@ By default, the action will fail when it was not possible to delete an artifact 
 
 ```yml
 steps:
-    - uses: geekyeggo/delete-artifact@v4
+    - uses: geekyeggo/delete-artifact@v5
       with:
           name: okay-to-keep
           failOnError: false

@@ -11,10 +11,14 @@
 
 # Change Log
 
+## v5.0
+
+-   Switch to [@actions/artifact](https://www.npmjs.com/package/@actions/artifact), removing the need for a `token` parameter (Sebastian Weigand) [#24](https://github.com/GeekyEggo/delete-artifact/pull/24)
+
 ## v4.1
 
 -   Add default token.
--   Fix over-arching `catch` output; errors now correctly result in a failed run ([@TheMrMilchmann ](https://github.com/TheMrMilchmann)).
+-   Fix over-arching `catch` output; errors now correctly result in a failed run (Leon Linhart) [#18](https://github.com/GeekyEggo/delete-artifact/pull/18)
 
 ## v4.0
 
