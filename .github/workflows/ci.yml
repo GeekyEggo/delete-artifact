@@ -35,11 +35,6 @@ jobs:
           name: my-artifact-3
           path: world.txt
 
-      - uses: actions/upload-artifact@v4
-        with:
-          name: you-artifact
-          path: world.txt
-
       - name: Delete (specific, glob disabled)
         uses: ./
         with:
@@ -50,9 +45,3 @@ jobs:
         uses: ./
         with:
           name: my-*
-
-      - name: Delete (specific, glob enabled, and token specified)
-        uses: ./
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          name: you-artifact

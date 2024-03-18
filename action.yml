@@ -8,6 +8,7 @@ inputs:
     description: GitHub token with read and write access to actions for the repository.
     required: true
     default: ${{ github.token }}
+    deprecationMessage: This isn't needed anymore.
   useGlob:
     description: Indicates whether the name, or names, should be treated as glob patterns.
     required: false
