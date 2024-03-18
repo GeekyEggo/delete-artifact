@@ -1,6 +1,6 @@
+import type { Artifact } from "@actions/artifact";
 import * as core from "@actions/core";
 import { minimatch } from "minimatch";
-import type { Artifact} from '@actions/artifact'
 import { getInputBoolean, getInputMultilineValues } from "./utils";
 
 /**

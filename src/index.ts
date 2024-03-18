@@ -1,5 +1,5 @@
+import { DefaultArtifactClient } from "@actions/artifact";
 import * as core from "@actions/core";
-import {DefaultArtifactClient} from '@actions/artifact'
 import { getDefaultFilter } from "./artifact-filter";
 import { fail } from "./utils";
 
@@ -9,7 +9,7 @@ import { fail } from "./utils";
         let failureCount = 0;
 
         // Get the artifacts associated with this workflow run.
-        const {artifacts} = await client.listArtifacts();
+        const { artifacts } = await client.listArtifacts();
         const filter = getDefaultFilter();
 
         // Iterate over the filtered artifacts, and remove them.
