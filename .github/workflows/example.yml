@@ -37,12 +37,12 @@ jobs:
           path: world.txt
 
       - name: Delete (specific, glob disabled)
-        uses: geekyeggo/delete-artifact@v4
+        uses: geekyeggo/delete-artifact@v5
         with:
           name: my-artifact
           useGlob: false
 
       - name: Delete (pattern, glob enabled)
-        uses: geekyeggo/delete-artifact@v4
+        uses: geekyeggo/delete-artifact@v5
         with:
           name: my-*
