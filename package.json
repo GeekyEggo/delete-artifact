@@ -1,7 +1,7 @@
 {
     "name": "delete-artifact",
     "description": "Deletes artifacts from a workflow run",
-    "version": "4.1.0",
+    "version": "5.1.0",
     "main": "src/index.ts",
     "scripts": {
         "build": "ncc build",
