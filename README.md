@@ -12,8 +12,13 @@ A GitHub Action for deleting artifacts within the workflow run. This can be usef
 | `@v1`, `@v2`, `@v3`       | `@v1`, `@v2`                |
 | `@v4`                     | ~~@v4~~, `@v5`              |
 
-> [!NOTE]
-> `geekyeggo/delete-artifact@v4` has been deprecated in favour of `geekyeggo/delete-artifact@v5` which removes the requirement of the `token` parameter.
+<!-- prettier-ignore -->
+> [!TIP]
+> You can reference the immutable commit SHA, instead of a version, for example.
+> ```yml
+> - uses: geekyeggo/delete-artifact@f275313e70c08f6120db482d7a6b98377786765b # v5.1.0
+> ```
+<!-- prettier-ignore-end -->
 
 ## ⚡ Usage
 
