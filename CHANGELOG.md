@@ -11,6 +11,11 @@
 
 # Change Log
 
+## v5.1
+
+-   Mark deprecated token parameter as optional.
+-   Bump undici dependency.
+
 ## v5.0
 
 -   Switch to [@actions/artifact](https://www.npmjs.com/package/@actions/artifact), removing the need for a `token` parameter (Sebastian Weigand) [#24](https://github.com/GeekyEggo/delete-artifact/pull/24)
