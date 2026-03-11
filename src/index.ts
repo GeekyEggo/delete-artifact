@@ -14,10 +14,14 @@ import { fail } from "./utils";
 
         // Iterate over the filtered artifacts, and remove them.
         for (const { name } of filter(artifacts)) {
-            if (await client.deleteArtifact(name)) {
+            try {
+                await client.deleteArtifact(name);
                 core.info(`Successfully deleted artifact: "${name}"`);
-            } else {
-                core.error(`Failed to delete artifact: "${name}"`);
+            } catch (e) {
+                core.error(
+                    `Failed to delete artifact: "${name}": ${e instanceof Error ? e.message : e}`,
+                );
+
                 failureCount++;
             }
         }
@@ -26,7 +30,7 @@ import { fail } from "./utils";
             fail(
                 `Failed to delete ${failureCount} artifact${
                     failureCount !== 1 ? "s" : ""
-                }.`
+                }.`,
             );
         }
     } catch (err) {

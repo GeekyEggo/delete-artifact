@@ -3,6 +3,7 @@
     "description": "Deletes artifacts from a workflow run",
     "version": "5.1.0",
     "main": "src/index.ts",
+    "type": "module",
     "scripts": {
         "build": "ncc build",
         "watch": "ncc build -w"
@@ -20,15 +21,14 @@
         "url": "https://github.com/geekyeggo/delete-artifact"
     },
     "dependencies": {
-        "@actions/artifact": "^2.1.7",
-        "@actions/core": "^1.10.0",
-        "@actions/github": "^6.0.0",
-        "minimatch": "^9.0.3"
+        "@actions/artifact": "^6.2.1",
+        "@actions/core": "^3.0.0",
+        "@actions/github": "^9.0.0",
+        "minimatch": "^10.2.4"
     },
     "devDependencies": {
-        "@types/minimatch": "^5.1.2",
-        "@types/node": "^20.10.5",
-        "@vercel/ncc": "^0.38.1",
-        "typescript": "^5.3.3"
+        "@types/node": "^25.4.0",
+        "@vercel/ncc": "^0.38.4",
+        "typescript": "^5.4.5"
     }
 }
