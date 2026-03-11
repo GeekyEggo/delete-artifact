@@ -16,7 +16,6 @@ import { fail } from "./utils";
         for (const { name } of filter(artifacts)) {
             try {
                 await client.deleteArtifact(name);
-                core.info(`Successfully deleted artifact: "${name}"`);
             } catch (e) {
                 core.error(
                     `Failed to delete artifact: "${name}": ${e instanceof Error ? e.message : e}`,
