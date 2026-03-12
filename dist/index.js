@@ -130881,7 +130881,6 @@ function getDefaultFilter() {
         for (const { name } of filter(artifacts)) {
             try {
                 await client.deleteArtifact(name);
-                info(`Successfully deleted artifact: "${name}"`);
             }
             catch (e) {
                 core_error(`Failed to delete artifact: "${name}": ${e instanceof Error ? e.message : e}`);
