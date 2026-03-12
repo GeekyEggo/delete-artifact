@@ -4,6 +4,9 @@
     "version": "5.1.0",
     "main": "src/index.ts",
     "type": "module",
+    "engines": {
+        "node": ">=24.0.0"
+    },
     "scripts": {
         "build": "ncc build",
         "watch": "ncc build -w"
